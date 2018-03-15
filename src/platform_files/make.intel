@@ -1,0 +1,11 @@
+CC = gcc
+LD = gcc
+CFL = -O3 -fopenmp
+LDFL =  -fopenmp
+#CFL = -g -O0 -openmp 
+#LDFL = -g -openmp
+
+INC = -I/opt/intel/opencl/include -I../include 
+LIB = /opt/intel/opencl/libOpenCL.so -lm  -fopenmp 
+
+AR = ar -ru

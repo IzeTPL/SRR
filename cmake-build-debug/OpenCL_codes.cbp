@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="OpenCL_codes"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="OpenCL_codes">
+				<Option output="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/OpenCL_codes" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCL_codes"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="OpenCL_codes/fast">
+				<Option output="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/OpenCL_codes" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCL_codes/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/Makefile">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/Makefile">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/OpenCL_info/OpenCL_info.c">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/OpenCL_util/OpenCL_util.c">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/bin/intel/SRR_ocl_OpenCL_info.bin">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/include/OpenCL_util.h">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/include/system_util.h">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/main_driver.c">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/obj/intel/OpenCL_info.o">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/obj/intel/system_util.o">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/obj/intel/system_util_lib.a">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/platform_files/make.centos7_nv_ocl">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/platform_files/make.intel">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/platform_files/make.l404_amd">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/platform_files/make.l404_nvidia">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/src/system_util/system_util.c">
+			<Option target="OpenCL_codes"/>
+		</Unit>
+		<Unit filename="/home/marian/ClionProjects/OpenCL_codes/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

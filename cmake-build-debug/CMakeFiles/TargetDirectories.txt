@@ -1,0 +1,3 @@
+/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marian/ClionProjects/OpenCL_codes/cmake-build-debug/CMakeFiles/OpenCL_codes.dir

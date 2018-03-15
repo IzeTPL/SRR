@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/OpenCL_codes.dir/src/OpenCL_info/OpenCL_info.c.o CMakeFiles/OpenCL_codes.dir/src/OpenCL_util/OpenCL_util.c.o CMakeFiles/OpenCL_codes.dir/src/system_util/system_util.c.o CMakeFiles/OpenCL_codes.dir/src/main_driver.c.o ../src/obj/intel/OpenCL_info.o ../src/obj/intel/system_util.o  -o OpenCL_codes 

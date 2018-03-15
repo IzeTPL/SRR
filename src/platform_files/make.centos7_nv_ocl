@@ -1,0 +1,11 @@
+CC = gcc
+LD = gcc
+CFL = -O3 -fopenmp
+LDFL =  -fopenmp
+#CFL = -g -O0 -openmp 
+#LDFL = -g -openmp
+
+INC = -I/usr/local/cuda/include/ -I../include 
+LIB = /usr/lib64/libOpenCL.so -lm  -fopenmp 
+
+AR = ar -ru

@@ -1,0 +1,11 @@
+CC = gcc
+LD = gcc
+CFL = -O3 -fopenmp
+LDFL =  -fopenmp
+#CFL = -g -O0 -openmp 
+#LDFL = -g -openmp
+
+INC = -I/opt/AMDAPPSDK-3.0/include -I../include 
+LIB = /opt/AMDAPPSDK-3.0/lib/x86_64/libOpenCL.so -lm  -fopenmp 
+
+AR = ar -ru
