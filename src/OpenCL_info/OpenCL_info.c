@@ -30,7 +30,7 @@ void displayInfo()
   printf("\nNumber of platforms: %u\n", numPlatforms);
 
   /* POBRANIE I WYSWIETLENIE INFORMACJI O PLATFORMACH */
-  // Next, allocate memory for the installed plaforms, and qeury 
+  // Next, allocate memory for the installed plaforms, and qeury
   // to get the list.
   cl_platform_id * platformIds;
   platformIds = (cl_platform_id *)malloc(sizeof(cl_platform_id) * numPlatforms);
@@ -134,30 +134,100 @@ void displayInfo()
 
 
       //Profil urzadzenia
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PROFILE,0,NULL,&size);
+		info = (char*) malloc (size*sizeof(char));
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PROFILE,size,info,&size);
+		printf("\nProfil urządzenia: --------------------- %s",info);
+		free(info);
 
-      //Maksymalna czestotliwosc zegara MHz
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,0,NULL,&size);
+		info = (char*) malloc (size*sizeof(char));
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,size,info,&size);
+		printf("\nTypy partycji: --------------------- %s",info);
+		free(info);
 
-      //Rozmiar pamieci globalnej
+		cl_platform_id infoPlatformId;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PRINTF_BUFFER_SIZE,sizeof(size_t),&infoPlatformId,NULL);
+		printf("\nDevice platform id: --------------------- %p",infoPlatformId);
 
-      //Rozmiar cache pamieci globalnej
+		size_t infoPrintfBufferSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PRINTF_BUFFER_SIZE,sizeof(size_t),&infoPrintfBufferSize,NULL);
+		printf("\nDevice printf buffer size: --------------------- %zu",infoPrintfBufferSize);
 
-      //Rozmiar linijki cache pamieci globalnej
+		cl_bool infoPrefIntUsrSync;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_INTEROP_USER_SYNC,sizeof(cl_bool),&infoPrefIntUsrSync,NULL);
+		printf("\nDevice prefered interop user sync: --------------------- %u",infoPrefIntUsrSync);
 
-      //Typ pamieci lokalnej
+		//Rozmiar pamieci globalnej-----------------
+		cl_ulong infoGlobMemSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_GLOBAL_MEM_SIZE,sizeof(cl_ulong),&infoGlobMemSize,NULL);
+		printf("\nDevice gloabl memory size: ---------------------- %lf [MB]",(((double) infoGlobMemSize)/1048576.0));
 
-      //Rozmiar pamieci lokalnej
 
-      //Maksymalny rozmiar pamięci do zaalokowania
+		//Rozmiar cache pamieci globalnej-----------------
+		cl_ulong infoGlobCacheSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_GLOBAL_MEM_CACHE_SIZE,sizeof(cl_ulong),&infoGlobCacheSize,NULL);
+		printf("\nDevice global memory cache size: ---------------- %lf [KB]",(((double) infoGlobCacheSize)/1024.0));
 
-      //Maksymalny rozmiar bufora stałych
+		//Rozmiar linijki cache pamieci globalnej---------------
+		cl_uint infoGlobCacheLineSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE,sizeof(cl_uint),&infoGlobCacheLineSize,NULL);
+		printf("\nDevice global memory cache line size: ----------- %u [B]",infoGlobCacheLineSize);
 
-      //Maksymalna liczba jednostek obliczeniowych
+		//Rozmiar pamieci lokalnej----------------
+		cl_ulong infoLocalMemSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_LOCAL_MEM_SIZE,sizeof(cl_ulong),&infoLocalMemSize,NULL);
+		printf("\nDevice local memory size: ----------------------- %lf [KB]",(((double) infoLocalMemSize)/1024.0));
 
-      //Maksymalny rozmiar grupy roboczej
+		//Maksymalny rozmiar pamięci do zaalokowania-----------
+		cl_ulong infoMaxMemAllocSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MAX_MEM_ALLOC_SIZE,sizeof(cl_ulong),&infoMaxMemAllocSize,NULL);
+		printf("\nDevice max memory allocation size: -------------- %lf [MB]",(((double) infoMaxMemAllocSize)/1048576.0));
 
-      //Maksymalny wymiar przestrzeni wątków
+		//Maksymalny rozmiar bufora stałych--------------
+		cl_ulong infoMaxConstBufSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE,sizeof(cl_ulong),&infoMaxConstBufSize,NULL);
+		printf("\nDevice max constant buffer size: ---------------- %lf [KB]",(((double) infoMaxConstBufSize)/1024.0));
 
-      //Rozszerzenia
+
+		//Maksymalna liczba jednostek obliczeniowych-------------
+		cl_uint infoMaxCompUnits;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MAX_COMPUTE_UNITS,sizeof(cl_uint),&infoMaxCompUnits,NULL);
+		printf("\nDevice max compute units: ----------------------- %u",infoMaxCompUnits);
+
+		cl_uint infoMaxConstantArgs;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MAX_CONSTANT_ARGS,sizeof(cl_uint),&infoMaxConstantArgs,NULL);
+		printf("\nDevice max constant args: --------------------- %u",infoMaxConstantArgs);
+
+		size_t infoMaxParameterSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MAX_PARAMETER_SIZE,sizeof(size_t),&infoMaxParameterSize,NULL);
+		printf("\nDevice max parameter size: --------------------- %zu",infoMaxParameterSize);
+
+		cl_uint infoMemBaseAddrAlign;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MEM_BASE_ADDR_ALIGN,sizeof(cl_uint),&infoMemBaseAddrAlign,NULL);
+		printf("\nDevice mem base addr align: --------------------- %u",infoMemBaseAddrAlign);
+
+		cl_uint infoMinDataTypeAlignSize;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_MIN_DATA_TYPE_ALIGN_SIZE,sizeof(cl_uint),&infoMinDataTypeAlignSize,NULL);
+		printf("\nDevice min data type align size: --------------------- %u",infoMinDataTypeAlignSize);
+
+		cl_uint infoPreferredVectorWidth;
+
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width short: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width char: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width int: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width long: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width float: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width double: --------------------- %u",infoPreferredVectorWidth);
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
+		printf("\nDevice preferred vector width half: --------------------- %u",infoPreferredVectorWidth);
+
 
 
     }
