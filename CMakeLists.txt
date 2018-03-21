@@ -3,6 +3,8 @@ project(OpenCL_codes)
 
 set(CMAKE_CXX_STANDARD 11)
 
+include_directories(/include)
+
 add_executable(OpenCL_codes
         src/bin/intel/SRR_ocl_OpenCL_info.bin
         src/include/OpenCL_util.h

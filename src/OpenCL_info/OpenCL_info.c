@@ -4,6 +4,7 @@
 #include <math.h>
 #include <time.h>
 #include "omp.h"
+#include "../include/OpenCL_util.h"
 
 #include <CL/cl.h>
 
@@ -140,12 +141,6 @@ void displayInfo()
 		printf("\nProfil urządzenia: --------------------- %s",info);
 		free(info);
 
-		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,0,NULL,&size);
-		info = (char*) malloc (size*sizeof(char));
-		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,size,info,&size);
-		printf("\nTypy partycji: --------------------- %s",info);
-		free(info);
-
 		cl_platform_id infoPlatformId;
 		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PRINTF_BUFFER_SIZE,sizeof(size_t),&infoPlatformId,NULL);
 		printf("\nDevice platform id: --------------------- %p",infoPlatformId);
@@ -227,6 +222,41 @@ void displayInfo()
 		printf("\nDevice preferred vector width double: --------------------- %u",infoPreferredVectorWidth);
 		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF,sizeof(cl_uint),&infoPreferredVectorWidth,NULL);
 		printf("\nDevice preferred vector width half: --------------------- %u",infoPreferredVectorWidth);
+
+		cl_device_partition_property *partitionInfo;
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,0,NULL,&size);
+		partitionInfo = (cl_device_partition_property *) malloc (size*sizeof(cl_device_partition_property));
+		retval = clGetDeviceInfo(devicesIds[j],CL_DEVICE_PARTITION_TYPE,size,partitionInfo,&size);
+		printf("\nTypy partycji: ---------------------");
+
+		if(size == 0) {
+			printf("There is no partition type associated with device");
+		}
+
+		for (int k = 0; k < size; ++k) {
+
+
+
+			switch (partitionInfo[k]) {
+				case CL_DEVICE_PARTITION_EQUALLY:
+					printf("\nPartition type: ----------------------- CL_DEVICE_PARTITION_EQUALLY");
+					break;
+
+				case CL_DEVICE_PARTITION_BY_COUNTS:
+					printf("\nDevice local memory type: ----------------------- CL_GLOBAL");
+					break;
+
+				case CL_DEVICE_PARTITION_BY_AFFINITY_DOMAIN:
+					printf("\nDevice local memory type: ----------------------- CL_DEVICE_PARTITION_BY_AFFINITY_DOMAIN");
+					break;
+
+				default:
+					printf("\nDevice local memory type: ----------------------- %p", partitionInfo);
+					break;
+			};
+
+		}
+		free(partitionInfo);
 
 
 
