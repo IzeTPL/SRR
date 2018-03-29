@@ -27,26 +27,47 @@ int OpenCL_Hello_host_2(
   int work_group_size,
   const cl_context context, 
   const cl_kernel OpenCL_Hello_kernel, 
-  const cl_command_queue queue
+  const cl_command_queue queue,
+  FILE *wyniki
 		) 
 { 
 
   int retval;
 
+	double time1;
+	double time2;
+	
+	//time1=time_clock();
+	//time2=time_clock();
+	//clFinish(queue);
+	//printf("Total time %lf", time2-time1);
+
   // Allocate A in device memory 
+  time1=time_clock();
   size_t size_bytes = N*sizeof(SCALAR); 
   cl_mem d_A = clCreateBuffer(context, CL_MEM_READ_ONLY,
 				size_bytes, NULL, NULL); 
 
   // Write A to device memory 
-  clEnqueueWriteBuffer(queue, d_A, CL_TRUE, 0, size_bytes, A, 0, 0, 0); 
+  clEnqueueWriteBuffer(queue, d_A, CL_TRUE, 0, size_bytes, A, 0, 0, 0);
 
-  // Allocate B in device memory 
+  // Allocate B in device memory
   cl_mem d_B = clCreateBuffer(context, CL_MEM_READ_ONLY,
 				size_bytes, NULL, NULL); 
 
-  // Write B to device memory 
+  // Write B to device memory
   clEnqueueWriteBuffer(queue, d_B, CL_TRUE, 0, size_bytes, B, 0, 0, 0); 
+   clFinish(queue);
+  time2=time_clock(); 
+  
+  printf("\nTotal read time %lf", time2-time1);
+  printf("\nGB/s = %lf", 2*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
+  
+
+
+	/* print integers and floats */
+
+	fprintf(wyniki, "%lf, %lf\n", time2-time1, 2*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
 
   // Allocate C in device memory 
   cl_mem d_C = clCreateBuffer(context, CL_MEM_WRITE_ONLY, size_bytes, NULL, NULL); 
@@ -102,7 +123,12 @@ int OpenCL_Hello_host_2(
 	 t2-t1, 3*N*sizeof(SCALAR)/(t2-t1)/1024/1024/1024);
 
   // Read B from device memory 
+  time1=time_clock();
   clEnqueueReadBuffer(queue, d_C, CL_TRUE, 0, size_bytes, C, 0, 0, 0); 
+  clFinish(queue);
+  time2=time_clock(); 
+  printf("\nTotal write time %lf", time2-time1);
+  printf("\nGB/s = %lf\n", 1*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
 
   // Free device memory 
   clReleaseMemObject(d_A); 

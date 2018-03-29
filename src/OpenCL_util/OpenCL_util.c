@@ -571,8 +571,8 @@ int utr_ocl_create_kernel(
     }
   
   // TO GET INFO FROM NVIDIA COMPILER
-  //retval = clBuildProgram(program, 0, NULL, "-cl-nv-verbose", NULL, NULL); 
-  retval = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+  retval = clBuildProgram(program, 0, NULL, "-cl-nv-verbose", NULL, NULL); 
+  //retval = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
   char* buildLog; size_t size_of_buildLog; 
   clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, 
 			0, NULL, &size_of_buildLog); 

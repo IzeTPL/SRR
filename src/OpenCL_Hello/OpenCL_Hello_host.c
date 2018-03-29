@@ -44,7 +44,8 @@ int OpenCL_Hello_host_2(
   int work_group_size,
   const cl_context context, 
   const cl_kernel OpenCL_Hello_kernel, 
-  const cl_command_queue queue
+  const cl_command_queue queue,
+  double *wyniki
 			); 
 
 /*----------------KERNEL CREATION PHASE----------------------*/
@@ -217,9 +218,14 @@ void execute_kernels()
     size_abc = n;
     // call routine to perform the actual work....
     // pass OpenCL parameters and host input/output data
-    OpenCL_Hello_host_2(kernel_index, A, B, C, size_abc, 
-			WORK_GROUP_SIZE, context, kernel, command_queue);
-    
+    FILE *f;
+    f = fopen("wyniki.txt", "w");
+    for(int i=0; i<n; i+=size_abc) {
+    OpenCL_Hello_host_2(kernel_index, &A[i], &B[i], &C[i], size_abc, 
+			WORK_GROUP_SIZE, context, kernel, command_queue, &f);
+			
+	}
+    fclose(f);
     time_print();
     
     
