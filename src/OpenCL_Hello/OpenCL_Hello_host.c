@@ -60,7 +60,7 @@ void create_kernels()
   // calculations are performed for the selected platform
   int platform_index = utv_ocl_struct.current_platform_index;
 
-  if(utr_ocl_GPU_context_exists(platform_index)){
+  if(utr_ocl_CPU_context_exists(platform_index)){
 
 
 #ifdef time_measurments
@@ -69,7 +69,7 @@ void create_kernels()
 
   // create the first kernel for GPU
   kernel_index = 0; 
-  utr_ocl_create_kernel_dev_type( platform_index, UTC_OCL_DEVICE_GPU, kernel_index,
+  utr_ocl_create_kernel_dev_type( platform_index, UTC_OCL_DEVICE_CPU, kernel_index,
 				  // kernel name:         , file:
 				  "OpenCL_Hello_kernel", "HelloWorld.cl", monitor);
   
@@ -145,10 +145,10 @@ void execute_kernels()
     int device_type = utr_ocl_device_type(platform_index, device_index); 
     
     // to omit the second CPU or GPU
-    if(device_index>0 && device_type==utr_ocl_device_type(platform_index, device_index-1)) break; 
+    //if(device_index>0 && device_type==utr_ocl_device_type(platform_index, device_index-1)) break;
     
     // to omit CPU
-    if(device_type == UTC_OCL_DEVICE_CPU) break;
+    //if(device_type == UTC_OCL_DEVICE_CPU) break;
     
     utt_ocl_device_struct device_struct = 
       utv_ocl_struct.list_of_platforms[platform_index].list_of_devices[device_index];
@@ -215,15 +215,16 @@ void execute_kernels()
     for(i=0;i<n;i++) C[i]=0.0;
     time_init(); 
     
-    size_abc = n;
+    size_abc = 256;
     // call routine to perform the actual work....
     // pass OpenCL parameters and host input/output data
+    double *wyniki = (double*) malloc(6 * sizeof(double));
     FILE *f;
     f = fopen("wyniki.txt", "w");
     for(int i=0; i<n; i+=size_abc) {
     OpenCL_Hello_host_2(kernel_index, &A[i], &B[i], &C[i], size_abc, 
-			WORK_GROUP_SIZE, context, kernel, command_queue, &f);
-			
+			WORK_GROUP_SIZE, context, kernel, command_queue, wyniki);
+			fprintf(f, "%lf,%lf,%lf,%lf,%lf,%lf\n", wyniki[0], wyniki[1], wyniki[2], wyniki[3], wyniki[4], wyniki[5]);
 	}
     fclose(f);
     time_print();

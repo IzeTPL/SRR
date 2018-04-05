@@ -28,7 +28,7 @@ int OpenCL_Hello_host_2(
   const cl_context context, 
   const cl_kernel OpenCL_Hello_kernel, 
   const cl_command_queue queue,
-  FILE *wyniki
+  double *wyniki
 		) 
 { 
 
@@ -60,14 +60,11 @@ int OpenCL_Hello_host_2(
    clFinish(queue);
   time2=time_clock(); 
   
-  printf("\nTotal read time %lf", time2-time1);
-  printf("\nGB/s = %lf", 2*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
-  
+  //printf("\nTotal read time %lf\n", time2-time1);
+  //printf("\nGB/s = %lf\n", 2*N*sizeof(SCALAR)/(time2-time1)/1024/1024/1024);
 
-
-	/* print integers and floats */
-
-	fprintf(wyniki, "%lf, %lf\n", time2-time1, 2*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
+	wyniki[0] = time2-time1;
+	wyniki[1] = 2*N*sizeof(SCALAR)/(time2-time1)/1024/1024/1024;
 
   // Allocate C in device memory 
   cl_mem d_C = clCreateBuffer(context, CL_MEM_WRITE_ONLY, size_bytes, NULL, NULL); 
@@ -116,19 +113,25 @@ int OpenCL_Hello_host_2(
 			  &endTime,
 			  0);
   double time = (double)endTime - (double)startTime;
-  printf("\nKernel execution internal: time %lf, GB/s = %lf\n", 
-	 time*1.0e-9, 3*N*sizeof(SCALAR)/(time*1.0e-9)/1024/1024/1024);
+  //printf("\nKernel execution internal: time %lf, GB/s = %lf\n",
+	 //time*1.0e-9, 3*N*sizeof(SCALAR)/(time*1.0e-9)/1024/1024/1024);
 
-  printf("Kernel execution external: time %lf,  GB/s = %lf\n\n", 
-	 t2-t1, 3*N*sizeof(SCALAR)/(t2-t1)/1024/1024/1024);
+	wyniki[2] = t2-t1;
+	wyniki[3] = 3*N*sizeof(SCALAR)/(t2-t1)/1024/1024/1024;
+
+  //printf("Kernel execution external: time %lf,  GB/s = %lf\n\n",
+	 //t2-t1, 3*N*sizeof(SCALAR)/(t2-t1)/1024/1024/1024);
 
   // Read B from device memory 
   time1=time_clock();
   clEnqueueReadBuffer(queue, d_C, CL_TRUE, 0, size_bytes, C, 0, 0, 0); 
   clFinish(queue);
   time2=time_clock(); 
-  printf("\nTotal write time %lf", time2-time1);
-  printf("\nGB/s = %lf\n", 1*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
+  //printf("\nTotal write time %lf", time2-time1);
+  //printf("\nGB/s = %lf\n", 1*N*sizeof(SCALAR)/((time2-time1))/1024/1024/1024);
+
+	wyniki[4] = time2-time1;
+	wyniki[5] = 1*N*sizeof(SCALAR)/(time2-time1)/1024/1024/1024;
 
   // Free device memory 
   clReleaseMemObject(d_A); 
