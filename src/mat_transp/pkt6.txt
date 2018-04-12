@@ -1,0 +1,23 @@
+Execution: 	3. restoring kernel 1 for platform 0 and device 0
+
+Kernel execution internal: time 4.590407, GB/s = 0.027231
+Kernel execution external: time 4.590824,  GB/s = 0.027228
+
+time C library   = 4.600000
+time CPU         = 3.519245
+time wallclock   = 4.614620
+GB/s = 0.027088
+
+PADDING
+
+Execution: 	3. restoring kernel 1 for platform 0 and device 0
+
+Kernel execution internal: time 2.042264, GB/s = 0.061207
+Kernel execution external: time 2.042591,  GB/s = 0.061197
+
+time C library   = 2.070000
+time CPU         = 1.579328
+time wallclock   = 2.066278
+GB/s = 0.060495
+
+

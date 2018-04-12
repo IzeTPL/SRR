@@ -1,0 +1,96 @@
+
+Number of OpenCL platforms: 	1
+
+Platform 0:
+	CL_PLATFORM_NAME:	NVIDIA CUDA
+	CL_PLATFORM_PROFILE:	FULL_PROFILE
+	CL_PLATFORM_VERSION:	OpenCL 1.2 CUDA 8.0.0
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+
+	Number of devices: 	1
+	Device 0:
+		CL_DEVICE_NAME:	GeForce GTX 960
+		CL_DEVICE_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_VERSION:	OpenCL 1.2 CUDA
+		device global memory size (MB) = 1995.625000
+		device global max alloc size (MB) = 498.906250
+		device local memory size (kB) = 48.000000
+		device constant memory size (kB) = 64.000000
+		device cache memory size (kB) = 128.000000
+		device cache line size (B) = 128
+		device maximal number of compute units = 8
+		device maximal number of work units in work group = 1024
+
+	Creating CPU context (index=0) on platform 0
+	Could not create CPU context on platform 0
+	Creating GPU context (index=1) on platform 0
+	Creating ACCELERATOR context (index=2) on platform 0
+	Could not create ACCELERATOR context on platform 0
+
+Creating command queue for GPU context 1, device 0, platform 0
+
+Creating kernel 0 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: mat_transp_1.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 0
+EXECUTION TIME: creating CPU kernel 0: 0.001049
+
+Creating kernel 1 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: mat_transp_2.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 1
+
+Creating kernel 2 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: mat_transp_3.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 2
+
+------------Starting execution phase----------------
+mat_transp: nr_access 33554432.000000
+
+Execution: 	0. restoring context and command queue for platform 0 and device 0
+
+------------******************************************----------------
+
+Execution: 	3. restoring kernel 0 for platform 0 and device 0
+
+Kernel execution internal: time 0.004321, GB/s = 28.931756
+Kernel execution external: time 0.004535,  GB/s = 27.563640
+
+time C library   = 0.030000
+time CPU         = 0.026095
+time wallclock   = 0.027837
+GB/s = 4.490920
+
+		6. verifying results: Output is correct
+
+------------******************************************----------------
+
+Execution: 	3. restoring kernel 1 for platform 0 and device 0
+
+Kernel execution internal: time 0.001840, GB/s = 67.939509
+Kernel execution external: time 0.002064,  GB/s = 60.562320
+
+time C library   = 0.020000
+time CPU         = 0.024009
+time wallclock   = 0.025010
+GB/s = 4.998789
+
+		6. verifying results: Output is correct
+
+------------******************************************----------------
+
+Execution: 	3. restoring kernel 2 for platform 0 and device 0
+
+Kernel execution internal: time 0.001712, GB/s = 72.997645
+Kernel execution external: time 0.001927,  GB/s = 64.871072
+
+time C library   = 0.030000
+time CPU         = 0.021865
+time wallclock   = 0.024847
+GB/s = 5.031410
+
+		6. verifying results: Output is correct
