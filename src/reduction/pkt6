@@ -1,0 +1,719 @@
+
+Number of OpenCL platforms: 	1
+
+Platform 0:
+	CL_PLATFORM_NAME:	NVIDIA CUDA
+	CL_PLATFORM_PROFILE:	FULL_PROFILE
+	CL_PLATFORM_VERSION:	OpenCL 1.2 CUDA 8.0.0
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+
+	Number of devices: 	1
+	Device 0:
+		CL_DEVICE_NAME:	GeForce GTX 960
+		CL_DEVICE_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_VERSION:	OpenCL 1.2 CUDA
+		device global memory size (MB) = 1995.625000
+		device global max alloc size (MB) = 498.906250
+		device local memory size (kB) = 48.000000
+		device constant memory size (kB) = 64.000000
+		device cache memory size (kB) = 128.000000
+		device cache line size (B) = 128
+		device maximal number of compute units = 8
+		device maximal number of work units in work group = 1024
+
+	Creating CPU context (index=0) on platform 0
+	Could not create CPU context on platform 0
+	Creating GPU context (index=1) on platform 0
+	Creating ACCELERATOR context (index=2) on platform 0
+	Could not create ACCELERATOR context on platform 0
+
+Creating command queue for GPU context 1, device 0, platform 0
+
+Creating kernel 0 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_single.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 0
+
+Creating kernel 1 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_conflict.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 1
+
+Creating kernel 2 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_opt.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 2
+EXECUTION TIME: creating CPU kernel 2: 0.004474
+
+------------Starting execution phase----------------
+
+------------Starting OpenMP execution phase----------------
+
+Arrays size: 16777216 (128 MB)
+EXECUTION TIME: executing standard OpenMP loop: 0.017312 (sc_prod = 5592404.833336)
+	Number of operations 33554432, performance 1.938213 GFlops
+	GBytes transferred to/from processor 0.268435, speed 15.505700 GB/s
+
+------------Starting OpenCL execution phase----------------
+
+Execution: 	1. restoring context and command queue for platform 0 and device 0
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 0 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000009
+
+Time for sending A to GPU memory:  0.022960 (internal 0.022390)
+
+Bandwidth 5.582845 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022684 (internal 0.022302)
+
+Bandwidth 5.604762 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003041, GB/s = 123.334491
+Kernel execution external: time 0.003198,  GB/s = 117.264147
+
+Time for sending C from GPU memory:  0.000018 (internal 0.000002)
+
+Bandwidth 0.266092 GB/s (size 512l)
+
+Time for releasing memory buffers on GPU:  0.000239
+
+@@@@@@@@@ Total execution time: 0.049161 (0.049112) @@@@@@@@@@@@
+
+time C library   = 0.060000
+time CPU         = 0.057268
+time wallclock   = 0.049169
+
+		Verifying results: Output is correct
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 1 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 256, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022984 (internal 0.022680)
+
+Bandwidth 5.511386 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022632 (internal 0.022250)
+
+Bandwidth 5.617852 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000010
+
+Kernel execution internal: time 0.024813, GB/s = 15.113167
+Kernel execution external: time 0.024965,  GB/s = 15.021001
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.004158 GB/s (size 8l)
+
+Time for releasing memory buffers on GPU:  0.000229
+
+@@@@@@@@@ Total execution time: 0.070865 (0.070839) @@@@@@@@@@@@
+
+time C library   = 0.070000
+time CPU         = 0.064211
+time wallclock   = 0.070898
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 512, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022699 (internal 0.022375)
+
+Bandwidth 5.586678 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022628 (internal 0.022260)
+
+Bandwidth 5.615397 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000001
+
+Kernel execution internal: time 0.012461, GB/s = 30.093139
+Kernel execution external: time 0.012617,  GB/s = 29.721542
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.009701 GB/s (size 16l)
+
+Time for releasing memory buffers on GPU:  0.000232
+
+@@@@@@@@@ Total execution time: 0.058223 (0.058197) @@@@@@@@@@@@
+
+time C library   = 0.060000
+time CPU         = 0.053351
+time wallclock   = 0.058231
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 1024, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022562 (internal 0.022259)
+
+Bandwidth 5.615785 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022674 (internal 0.022307)
+
+Bandwidth 5.603668 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.006383, GB/s = 58.746491
+Kernel execution external: time 0.006538,  GB/s = 57.357742
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.019403 GB/s (size 32l)
+
+Time for releasing memory buffers on GPU:  0.000228
+
+@@@@@@@@@ Total execution time: 0.052048 (0.052023) @@@@@@@@@@@@
+
+time C library   = 0.060000
+time CPU         = 0.050886
+time wallclock   = 0.052055
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 2048, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022594 (internal 0.022296)
+
+Bandwidth 5.606499 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022684 (internal 0.022279)
+
+Bandwidth 5.610622 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003533, GB/s = 106.140406
+Kernel execution external: time 0.003687,  GB/s = 101.704753
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.038805 GB/s (size 64l)
+
+Time for releasing memory buffers on GPU:  0.000229
+
+@@@@@@@@@ Total execution time: 0.049240 (0.049215) @@@@@@@@@@@@
+
+time C library   = 0.040000
+time CPU         = 0.047088
+time wallclock   = 0.049246
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 4096, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022530 (internal 0.022230)
+
+Bandwidth 5.623157 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022665 (internal 0.022301)
+
+Bandwidth 5.605084 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003066, GB/s = 122.294519
+Kernel execution external: time 0.003219,  GB/s = 116.491186
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.066523 GB/s (size 128l)
+
+Time for releasing memory buffers on GPU:  0.000231
+
+@@@@@@@@@ Total execution time: 0.048691 (0.048666) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.047650
+time wallclock   = 0.048698
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 8192, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022735 (internal 0.022399)
+
+Bandwidth 5.580548 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022762 (internal 0.022399)
+
+Bandwidth 5.580548 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003044, GB/s = 123.210005
+Kernel execution external: time 0.003200,  GB/s = 117.185516
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.155220 GB/s (size 256l)
+
+Time for releasing memory buffers on GPU:  0.000232
+
+@@@@@@@@@ Total execution time: 0.048975 (0.048949) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.047922
+time wallclock   = 0.048983
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000002
+
+Time for sending A to GPU memory:  0.022725 (internal 0.022424)
+
+Bandwidth 5.574496 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022697 (internal 0.022329)
+
+Bandwidth 5.598015 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003037, GB/s = 123.490453
+Kernel execution external: time 0.003191,  GB/s = 117.518231
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.310441 GB/s (size 512l)
+
+Time for releasing memory buffers on GPU:  0.000233
+
+@@@@@@@@@ Total execution time: 0.048893 (0.048867) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.045820
+time wallclock   = 0.048899
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 32768, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022953 (internal 0.022654)
+
+Bandwidth 5.517676 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022738 (internal 0.022349)
+
+Bandwidth 5.593013 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003070, GB/s = 122.161934
+Kernel execution external: time 0.003269,  GB/s = 114.715484
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.532184 GB/s (size 1024l)
+
+Time for releasing memory buffers on GPU:  0.000232
+
+@@@@@@@@@ Total execution time: 0.049238 (0.049213) @@@@@@@@@@@@
+
+time C library   = 0.040000
+time CPU         = 0.047142
+time wallclock   = 0.049246
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 65536, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022529 (internal 0.022227)
+
+Bandwidth 5.623676 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022655 (internal 0.022286)
+
+Bandwidth 5.609011 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000001
+
+Kernel execution internal: time 0.003060, GB/s = 122.550301
+Kernel execution external: time 0.003214,  GB/s = 116.672650
+
+Time for sending C from GPU memory:  0.000016 (internal 0.000002)
+
+Bandwidth 0.931323 GB/s (size 2048l)
+
+Time for releasing memory buffers on GPU:  0.000234
+
+@@@@@@@@@ Total execution time: 0.048679 (0.048652) @@@@@@@@@@@@
+
+time C library   = 0.060000
+time CPU         = 0.046649
+time wallclock   = 0.048688
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 131072, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022702 (internal 0.022362)
+
+Bandwidth 5.589748 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022695 (internal 0.022330)
+
+Bandwidth 5.597822 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000007
+
+Kernel execution internal: time 0.003058, GB/s = 122.622112
+Kernel execution external: time 0.003207,  GB/s = 116.932867
+
+Time for sending C from GPU memory:  0.000017 (internal 0.000002)
+
+Bandwidth 1.862645 GB/s (size 4096l)
+
+Time for releasing memory buffers on GPU:  0.000229
+
+@@@@@@@@@ Total execution time: 0.048894 (0.048859) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.047707
+time wallclock   = 0.048930
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 262144, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022530 (internal 0.022226)
+
+Bandwidth 5.623935 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022630 (internal 0.022265)
+
+Bandwidth 5.614170 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003032, GB/s = 123.667687
+Kernel execution external: time 0.003187,  GB/s = 117.667689
+
+Time for sending C from GPU memory:  0.000020 (internal 0.000003)
+
+Bandwidth 2.980232 GB/s (size 8192l)
+
+Time for releasing memory buffers on GPU:  0.000230
+
+@@@@@@@@@ Total execution time: 0.048626 (0.048602) @@@@@@@@@@@@
+
+time C library   = 0.040000
+time CPU         = 0.046614
+time wallclock   = 0.048640
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 524288, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000000
+
+Time for sending A to GPU memory:  0.022589 (internal 0.022290)
+
+Bandwidth 5.607916 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022648 (internal 0.022286)
+
+Bandwidth 5.608882 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003026, GB/s = 123.918767
+Kernel execution external: time 0.003185,  GB/s = 117.738154
+
+Time for sending C from GPU memory:  0.000024 (internal 0.000003)
+
+Bandwidth 4.584973 GB/s (size 16384l)
+
+Time for releasing memory buffers on GPU:  0.000234
+
+@@@@@@@@@ Total execution time: 0.048711 (0.048684) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.047730
+time wallclock   = 0.048723
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 1048576, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022541 (internal 0.022228)
+
+Bandwidth 5.623546 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022602 (internal 0.022235)
+
+Bandwidth 5.621668 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000001
+
+Kernel execution internal: time 0.003044, GB/s = 123.178923
+Kernel execution external: time 0.003191,  GB/s = 117.518231
+
+Time for sending C from GPU memory:  0.000030 (internal 0.000005)
+
+Bandwidth 6.622738 GB/s (size 32768l)
+
+Time for releasing memory buffers on GPU:  0.000230
+
+@@@@@@@@@ Total execution time: 0.048624 (0.048597) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.047445
+time wallclock   = 0.048640
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 2097152, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022636 (internal 0.022337)
+
+Bandwidth 5.596090 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022737 (internal 0.022340)
+
+Bandwidth 5.595449 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003049, GB/s = 123.003086
+Kernel execution external: time 0.003202,  GB/s = 117.115711
+
+Time for sending C from GPU memory:  0.000043 (internal 0.000007)
+
+Bandwidth 8.514949 GB/s (size 65536l)
+
+Time for releasing memory buffers on GPU:  0.000231
+
+@@@@@@@@@ Total execution time: 0.048914 (0.048853) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.045905
+time wallclock   = 0.048934
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 4194304, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022596 (internal 0.022289)
+
+Bandwidth 5.608045 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022661 (internal 0.022299)
+
+Bandwidth 5.605663 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000002
+
+Kernel execution internal: time 0.003042, GB/s = 123.282591
+Kernel execution external: time 0.003190,  GB/s = 117.562150
+
+Time for sending C from GPU memory:  0.000074 (internal 0.000012)
+
+Bandwidth 9.934107 GB/s (size 131072l)
+
+Time for releasing memory buffers on GPU:  0.000230
+
+@@@@@@@@@ Total execution time: 0.048782 (0.048755) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.046754
+time wallclock   = 0.048809
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 8388608, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022762 (internal 0.022461)
+
+Bandwidth 5.565220 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022967 (internal 0.022605)
+
+Bandwidth 5.529799 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000010
+
+Kernel execution internal: time 0.003089, GB/s = 121.382478
+Kernel execution external: time 0.003241,  GB/s = 115.702810
+
+Time for sending C from GPU memory:  0.000121 (internal 0.000023)
+
+Bandwidth 10.837208 GB/s (size 262144l)
+
+Time for releasing memory buffers on GPU:  0.000234
+
+@@@@@@@@@ Total execution time: 0.049364 (0.049338) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.046446
+time wallclock   = 0.049406
+
+		Verifying results: Output is correct
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16777216, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000001
+
+Time for sending A to GPU memory:  0.022591 (internal 0.022288)
+
+Bandwidth 5.608431 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000001
+
+Time for sending B to GPU memory:  0.022793 (internal 0.022421)
+
+Bandwidth 5.575132 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000007
+
+Kernel execution internal: time 0.003276, GB/s = 114.458802
+Kernel execution external: time 0.003439,  GB/s = 109.044925
+
+Time for sending C from GPU memory:  0.000223 (internal 0.000043)
+
+Bandwidth 11.286087 GB/s (size 524288l)
+
+Time for releasing memory buffers on GPU:  0.000234
+
+@@@@@@@@@ Total execution time: 0.049318 (0.049289) @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.048241
+time wallclock   = 0.049382
+
+		Verifying results: Output is correct
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 2 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003286, GB/s = 114.137740
+Kernel execution external: time 0.003757,  GB/s = 99.813682
+
+@@@@@@@@@ Total execution time: 0.050828 @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.050047
+time wallclock   = 0.051103
+
+		Verifying results: Output is correct

@@ -1,0 +1,223 @@
+
+Number of OpenCL platforms: 	1
+
+Platform 0:
+	CL_PLATFORM_NAME:	NVIDIA CUDA
+	CL_PLATFORM_PROFILE:	FULL_PROFILE
+	CL_PLATFORM_VERSION:	OpenCL 1.2 CUDA 8.0.0
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+
+	Number of devices: 	1
+	Device 0:
+		CL_DEVICE_NAME:	GeForce GTX 960
+		CL_DEVICE_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_VERSION:	OpenCL 1.2 CUDA
+		device global memory size (MB) = 1995.625000
+		device global max alloc size (MB) = 498.906250
+		device local memory size (kB) = 48.000000
+		device constant memory size (kB) = 64.000000
+		device cache memory size (kB) = 128.000000
+		device cache line size (B) = 128
+		device maximal number of compute units = 8
+		device maximal number of work units in work group = 1024
+
+	Creating CPU context (index=0) on platform 0
+	Could not create CPU context on platform 0
+	Creating GPU context (index=1) on platform 0
+	Creating ACCELERATOR context (index=2) on platform 0
+	Could not create ACCELERATOR context on platform 0
+
+Creating command queue for GPU context 1, device 0, platform 0
+
+Creating kernel 0 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_single.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 0
+
+Creating kernel 1 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_conflict.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 1
+
+Creating kernel 2 for platform 0: selected device 0 for type 1 (GPU)
+Program file is: reduction_opt.cl
+Kernel buildLog: 
+
+Created kernel for platform 0, device 0, kernel index 2
+EXECUTION TIME: creating CPU kernel 2: 0.001181
+
+------------Starting execution phase----------------
+
+------------Starting OpenMP execution phase----------------
+
+Arrays size: 16777216 (128 MB)
+EXECUTION TIME: executing standard OpenMP loop: 0.017393 (sc_prod = 5592404.833336)
+	Number of operations 33554432, performance 1.929206 GFlops
+	GBytes transferred to/from processor 0.268435, speed 15.433646 GB/s
+
+------------Starting OpenCL execution phase----------------
+
+Execution: 	1. restoring context and command queue for platform 0 and device 0
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 0 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+
+Time for creating buffer for A:  0.000016
+
+Time for sending A to GPU memory:  0.022736 (internal 0.022167)
+
+Bandwidth 5.638938 GB/s (size 134217728l)
+
+Time for creating buffer for B:  0.000002
+
+Time for sending B to GPU memory:  0.022519 (internal 0.022136)
+
+Bandwidth 5.646959 GB/s (size 134217728l)
+
+Time for creating buffer for C:  0.000001
+
+Kernel execution internal: time 0.003055, GB/s = 122.745412
+Kernel execution external: time 0.003222,  GB/s = 116.387746
+
+Time for sending C from GPU memory:  0.000019 (internal 0.000002)
+
+Bandwidth 0.232831 GB/s (size 512l)
+
+Time for releasing memory buffers on GPU:  0.000232
+
+@@@@@@@@@ Total execution time: 0.048798 (0.048747) @@@@@@@@@@@@
+
+time C library   = 0.060000
+time CPU         = 0.055743
+time wallclock   = 0.048806
+
+		Verifying results: Output is correct
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 1 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 256, Work_group_size 256 ------------*****
+
+
+Kernel execution internal: time 0.026597, GB/s = 14.099542
+Kernel execution external: time 0.026757,  GB/s = 14.015023
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 512, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.012470, GB/s = 30.072135
+Kernel execution external: time 0.012632,  GB/s = 29.686762
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 1024, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.006384, GB/s = 58.741779
+Kernel execution external: time 0.006540,  GB/s = 57.338923
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 2048, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003536, GB/s = 106.040520
+Kernel execution external: time 0.003694,  GB/s = 101.514393
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 4096, Work_group_size 256 ------------*****
+Kernel execution internal: time 0.003080, GB/s = 121.745657
+Kernel execution external: time 0.003227,  GB/s = 116.207167
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 8192, Work_group_size 256 ------------*****
+Kernel execution internal: time 0.003046, GB/s = 123.096113
+Kernel execution external: time 0.003196,  GB/s = 117.334129
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+Kernel execution internal: time 0.003076, GB/s = 121.897624
+Kernel execution external: time 0.003230,  GB/s = 116.095660
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 32768, Work_group_size 256 ------------*****
+Kernel execution internal: time 0.003156, GB/s = 118.812860
+Kernel execution external: time 0.003337,  GB/s = 112.371508
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 65536, Work_group_size 256 ------------*****
+Kernel execution internal: time 0.003048, GB/s = 123.013415
+Kernel execution external: time 0.003206,  GB/s = 116.967651
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 131072, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003050, GB/s = 122.930828
+Kernel execution external: time 0.003208,  GB/s = 116.898105
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 262144, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003075, GB/s = 121.968672
+Kernel execution external: time 0.003238,  GB/s = 115.813563
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 524288, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003069, GB/s = 122.192505
+Kernel execution external: time 0.003227,  GB/s = 116.207167
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 1048576, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003109, GB/s = 120.622838
+Kernel execution external: time 0.003268,  GB/s = 114.748960
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 2097152, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003708, GB/s = 101.121341
+Kernel execution external: time 0.003861,  GB/s = 97.126343
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 4194304, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.004182, GB/s = 89.675161
+Kernel execution external: time 0.004336,  GB/s = 86.482872
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 8388608, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.007840, GB/s = 47.831633
+Kernel execution external: time 0.008001,  GB/s = 46.870016
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16777216, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.015185, GB/s = 24.695592
+Kernel execution external: time 0.015342,  GB/s = 24.442711
+
+------------******************************************----------------
+
+Execution: 	2. restoring kernel 2 for platform 0 and device 0
+
+
+*****------ Starting execution of reduction for size 16777216 (128 MB) ------*****
+*****---------------- Nr_threads 16384, Work_group_size 256 ------------*****
+
+Kernel execution internal: time 0.003042, GB/s = 123.272217
+Kernel execution external: time 0.003201,  GB/s = 117.150603
+
+@@@@@@@@@ Total execution time: 0.048209 @@@@@@@@@@@@
+
+time C library   = 0.050000
+time CPU         = 0.046534
+time wallclock   = 0.048470
+
+		Verifying results: Output is correct
